@@ -7,8 +7,13 @@ import { toast } from 'sonner';
 =======
 import React from 'react';
 import { useResolvedTheme } from '@/hooks/useResolvedTheme';
+<<<<<<< HEAD
 import { Plus, Edit2, Trash2, Users, Trophy, Clock } from 'lucide-react';
 >>>>>>> main
+=======
+import { Plus, Edit2, Trash2, Users, Trophy, Clock, Award } from 'lucide-react';
+import Link from 'next/link';
+>>>>>>> feature/new-work
 
 interface Segment {
   id: number;
@@ -277,6 +282,7 @@ export default function AdminSegmentsPage() {
         </div>
       )}
 
+<<<<<<< HEAD
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
@@ -288,6 +294,49 @@ export default function AdminSegmentsPage() {
                 className={`p-1 rounded-lg transition-colors ${isDark ? 'hover:bg-white/10' : 'hover:bg-black/10'}`}>
                 <X className="w-5 h-5" />
               </button>
+=======
+            <div className="space-y-4 flex-1 relative z-10">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm">
+                  <Users className={`w-4 h-4 ${mutedText}`} />
+                  <span className={mutedText}>Participants</span>
+                </div>
+                <span className={`font-semibold ${textColor}`}>{segment.participants} Registered</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm">
+                  <Trophy className={`w-4 h-4 text-yellow-500`} />
+                  <span className={mutedText}>Prize Pool</span>
+                </div>
+                <span className={`font-semibold text-yellow-500`}>{segment.prize}</span>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2 text-sm">
+                  <Clock className={`w-4 h-4 ${mutedText}`} />
+                  <span className={mutedText}>Duration</span>
+                </div>
+                <span className={`font-semibold ${textColor}`}>{segment.duration}</span>
+              </div>
+            </div>
+
+            <div className={`mt-6 pt-4 border-t ${isDark ? 'border-white/10' : 'border-gray-100'} flex items-center justify-between relative z-10`}>
+              <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${segment.status === 'Active'
+                  ? (isDark ? 'bg-[#588157]/10 text-[#a3b18a] border-[#588157]/20' : 'bg-[#3a5a40]/10 text-[#3a5a40] border-[#3a5a40]/20')
+                  : segment.status === 'Upcoming'
+                    ? (isDark ? 'bg-blue-500/10 text-blue-400 border-blue-500/20' : 'bg-blue-100 text-blue-700 border-blue-200')
+                    : (isDark ? 'bg-purple-500/10 text-purple-400 border-purple-500/20' : 'bg-purple-100 text-purple-700 border-purple-200')
+                }`}>
+                {segment.status}
+              </span>
+              <Link href="/admin/segments/winners" className="text-sm font-medium hover:underline text-[#588157] hover:text-[#a3b18a]">
+                <div className="flex items-center gap-1">
+                  <Award className="w-4 h-4" />
+                  <span>Manage Winners</span>
+                </div>
+              </Link>
+>>>>>>> feature/new-work
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
